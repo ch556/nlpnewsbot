@@ -76,17 +76,16 @@ async def summ(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def link(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if context.args:
-        if valid_url(context.args[0]):
-            status, text = get_text(context.args[0])
-            if status:
-                response = summarize(text, mode='link')
-                await update.message.reply_text(response)
-            else:
-                await update.message.reply_text('Неправильная ссылка!')
+
+        status, text = get_text(context.args[0])
+        if status:
+            response = summarize(text, mode='link')
+            await update.message.reply_text(response)
         else:
-            await update.message.reply_text('Неправильная ссылка')
+            await update.message.reply_text('Неправильная ссылка!')
+
     else:
-        await update.message.reply_text('Введите ссылку...')
+        await update.message.reply_text('Введите ссылку... /link ссылка')
 
 
 async def news(update: Update, context: ContextTypes.DEFAULT_TYPE):

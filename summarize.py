@@ -18,8 +18,9 @@ def init_model():
 
 
 model, tokenizer = init_model()
-device = torch.device("cuda")
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
+logging.info(f'Running on {device}')
 
 
 def summarize(text, mode='scoop'):
@@ -38,6 +39,6 @@ def summarize(text, mode='scoop'):
                              top_k=10,
                              repetition_penalty=1.5,
                              no_repeat_ngram_size=2,
-                             early_stopping=True)  # change according to your preferences
+                             early_stopping=True)
     summary = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return summary

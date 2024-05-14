@@ -7,7 +7,7 @@ import validators
 def setup_logger():
     logging.basicConfig(format='%(levelname)s (%(asctime)s): %(message)s',
                         datefmt='%d/%m/%y %H:%M:%S',
-                        level=logging.INFO)
+                        level=logging.DEBUG)
     logger = logging.getLogger("httpx").setLevel(logging.WARNING)
     return logger
 

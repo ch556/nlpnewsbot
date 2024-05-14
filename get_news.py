@@ -7,6 +7,7 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 
+
 def get_text(url):
     logging.info(f'Getting text for {url}')
     wn_url = f"https://api.apilayer.com/world_news/extract-news?url={url}&analyze={False}"
@@ -18,8 +19,14 @@ def get_text(url):
     if response.status_code == 200:
         result = response.text
         decoded_text = result.encode('utf-8').decode('unicode-escape')
-        text_field = json.loads(decoded_text)["text"]
-        return True, text_field
+
+        try:
+            text_field = json.loads(decoded_text)["text"]
+            return True, text_field
+        except json.decoder.JSONDecodeError:
+            logging.error('JSON decode error! Skipping article...')
+            return True, 'Не получилось обработать эту статью'
+
     if response.status_code == 502:
         return False, 'Bad link!'
     else:
@@ -75,3 +82,5 @@ def collect_news(co):
         return news
     else:
         logging.error(f"Error: {response.status_code}")
+
+

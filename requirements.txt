@@ -1,0 +1,6 @@
+python-telegram-bot==21.1.1
+validators==0.28.1
+transformers==4.40.2
+torch==2.2.1
+beautifulsoup4==4.12.3
+sentencepiece==0.2.0

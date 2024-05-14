@@ -1,0 +1,8 @@
+Project Name: nlpnewsbot
+Description:
+nlpnewsbot is a telegram bot that uses a pretrained NLP model to summarize news articles.
+Key features:
+/summarize [text] - Summarizes your text
+/scoop - Latest news from Russia
+/link [link] - News summarization from your link
+/news - News gathering

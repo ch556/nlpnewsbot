@@ -5,14 +5,14 @@ import logging
 import time
 from utils import setup_logger, valid_url
 from datetime import datetime
-from api_keys import TOKEN, BOT_USERNAME
+from api_keys import TOKEN
 from summarize import summarize
 from get_news import get_news, get_text, collect_news
 logger = setup_logger()
 
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('Started /help')
+    await update.message.reply_text('Мои команды здесь: /help')
 
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
